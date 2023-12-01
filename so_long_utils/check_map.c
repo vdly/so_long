@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 21:26:07 by johii             #+#    #+#             */
-/*   Updated: 2023/11/28 21:12:29 by johii            ###   ########.fr       */
+/*   Updated: 2023/11/30 19:52:14 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	invalid_char(t_database *db)
 		x = 0;
 		while (db->x_len > x)
 		{
-			if (db->map[y][x] == 'P')
-			{
-				db->player_x = x;
-				db->player_y = y;
-			}
 			if (db->map[y][x] == '0' || db->map[y][x] == '1' || db->map
 			[y][x] == 'P' || db->map[y][x] == 'C' || db->map[y][x] == 'E')
 				x++;
@@ -66,4 +61,44 @@ void	invalid_char(t_database *db)
 		}
 		y++;
 	}
+}
+
+void	required_char(t_database *db)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (db->map[y])
+	{
+		while (db->map[y][x])
+		{
+			if (db->map[y][x] == 'P')
+				db->player_count++;
+			if (db->map[y][x] == 'C')
+				db->coin_count++;
+			if (db->map[y][x] == 'E')
+				db->exit_count++;
+			x++;
+		}
+		y++;
+	}
+	char_check(db);
+}
+
+void	char_check(t_database *db)
+{
+	if (db->player_count != 1 || db->coin_count < 1 || db->exit_count < 1)
+	{
+		ft_printf("doesnt have required char(s) :O (1P 1C 1E)\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	check_map(t_database *db)
+{
+	check_walls(db);
+	invalid_char(db);
+	required_char(db);
 }

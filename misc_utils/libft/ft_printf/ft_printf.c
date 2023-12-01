@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:50:25 by johii             #+#    #+#             */
-/*   Updated: 2023/07/13 15:23:50 by johii            ###   ########.fr       */
+/*   Updated: 2023/11/29 22:04:22 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	print_format(char format, va_list ap)
 		return (len);
 }
 
-int	ft_printf(const char *str, ...)
+int	zft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		len;
