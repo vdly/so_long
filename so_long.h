@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:17:55 by johii             #+#    #+#             */
-/*   Updated: 2023/12/01 21:10:10 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/02 18:33:14 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct t_database
 	int			x_len;
 	int			y_len;
 	int			mov_count;
+	int			exit_flag;
 	int			player_count;
 	int			coin_count;
 	int			exit_count;

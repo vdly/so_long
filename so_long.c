@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:18:19 by johii             #+#    #+#             */
-/*   Updated: 2023/12/01 21:04:55 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/02 18:33:55 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	initialize_database(t_database *db, char *map)
 	db->player_count = 0;
 	db->coin_count = 0;
 	db->exit_count = 0;
+	db->mov_count = 0;
+	db->exit_flag = 0;
 	db->map_name = map;
 }
 

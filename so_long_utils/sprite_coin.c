@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coin_sprite.c                                      :+:      :+:    :+:   */
+/*   sprite_coin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:45:45 by johii             #+#    #+#             */
-/*   Updated: 2023/12/01 20:47:32 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/02 15:53:25 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	player_xpm(t_database *db)
+void	coin_xpm(t_database *db)
 {
 	db->sprites->coin1 = mlx_xpm_file_to_image (db->mlx,
 			"xpm/coin1.xpm", db->img_width, db->img_height);
