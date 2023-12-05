@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:32:30 by johii             #+#    #+#             */
-/*   Updated: 2023/12/01 20:57:25 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/04 15:26:48 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	valid_path_to_exit(int *flag, int x, int y, t_database *db)
 	valid_path_to_exit(flag, x - 1, y, db);
 }
 
-void	check_path(t_database *db)
+void	check_map_path(t_database *db)
 {
 	int	x;
 	int	y;

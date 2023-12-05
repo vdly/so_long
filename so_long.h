@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:17:55 by johii             #+#    #+#             */
-/*   Updated: 2023/12/02 18:33:14 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/04 15:26:48 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,18 @@
 # include "misc_utils/libft/ft_printf/ft_printf.h"
 # include "misc_utils/get_next_line/get_next_line.h"
 
-typedef struct s_imgs
-{
-	void	*wall;
-	void	*floor;
-	void	*exit;
-}	t_imgs;
-
-typedef struct s_sprite
+//bonus
+typedef struct s_coin
 {
 	void	*coin1;
 	void	*coin2;
 	void	*coin3;
 	void	*coin4;
 	void	*coin5;
+}	t_coins;
+
+typedef struct s_player
+{
 	void	*player1;
 	void	*player2;
 	void	*player3;
@@ -45,7 +43,17 @@ typedef struct s_sprite
 	void	*player5;
 	void	*player6;
 	void	*player7;
-}	t_sprite;
+}	t_player;
+//bonus
+
+typedef struct s_imgs
+{
+	void	*wall;
+	void	*floor;
+	void	*exit;
+	void	*player;
+	void	*coin;
+}	t_imgs;
 
 typedef struct t_database
 {
@@ -67,7 +75,8 @@ typedef struct t_database
 	void		*mlx;
 	void		*window;
 	t_imgs		*imgs;
-	t_sprite	*sprites;
+	t_player	*player_sprites;
+	t_coins		*coin_sprite;
 }	t_database;
 
 void	read_map(t_database *db, char ***map);
@@ -79,7 +88,7 @@ void	char_check(t_database *db);
 void	check_all(t_database *db);
 void	player_pos(t_database *db);
 int		valid_path_to_exit(int *flag, int x, int y, t_database *db);
-void	check_path(t_database *db);
+void	check_map_path(t_database *db);
 void	exit(t_database *db);
 
 #endif
