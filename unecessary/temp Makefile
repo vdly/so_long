@@ -1,0 +1,70 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: johii <johii@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/16 19:12:22 by johii             #+#    #+#              #
+#    Updated: 2023/12/06 22:52:18 by johii            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		=	so_long
+LIBFT		=	misc_utils/libft/*.c
+PRINTF		=	misc_utils/libft/ft_printf/*.c
+GNL			=	misc_utils/get_next_line/*.c
+
+LIBFTDIR = misc_utils/libft
+LIBFTSRC = $(LIBFTDIR)/*.c
+PRINTFDIR = $(LIBFTDIR)/ft_printf
+PRINTFSRC = $(PRINTFDIR)/*.c
+GNLDIR = misc_utils/get_next_line
+GNLSRC = $(GNLDIR)/*.c
+
+OBJDIR = objects/
+
+CC			=	cc
+FLAGS		=	-Wall -Werror -Wextra
+MLX_FLAGS	=	-lmlx -framework OpenGL -framework AppKit 
+RM			=	rm -rf
+
+SLFILES		=	so_long.c					\
+				so_long_utils/check_map.c	\
+				so_long_utils/check_path.c	\
+				so_long_utils/map_size.c	\
+				so_long_utils/print_img.c	\
+				so_long_utils/print_map.c	\
+				so_long_utils/read_map.c	\
+				so_long_utils/set_keys.c	\
+				
+# SLOFILES	=	(SLFILES:.c=.o)
+
+UTILS_COMP	=	cc $(LIBFT) $(PRINTF) $(GNL) -o abc
+
+# SL_COMP		=	cc $(FLAGS) $(MLX_FLAGS) $()
+
+all: $(NAME)
+
+$(NAME): $(OBJDIR)
+
+$(OBJDIR): $(OBJ)
+	mkdir -p $(OBJDIR)
+	mv *.o $(OBJDIR)
+	
+$(OBJ):
+	cc $(LIBFTSRC) -c
+	cc $(PRINTFSRC) -c
+	cc $(GNLSRC) -c
+
+clean		:
+				$(RM) libft/*.o
+				$(RM) libft/ft_printf/*.o
+				$(RM) get_next_line/*.o
+            
+fclean		:	clean
+				$(RM)
+            
+re			:	fclean all
+
+.PHONY		:	all bonus clean fclean re

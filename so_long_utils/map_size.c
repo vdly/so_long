@@ -6,11 +6,13 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:50:26 by johii             #+#    #+#             */
-/*   Updated: 2023/11/30 19:50:41 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/07 17:06:18 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
+
+int	ft_countline(char *line);
 
 void	map_size(t_database *db)
 {
@@ -25,15 +27,29 @@ void	map_size(t_database *db)
 		db->x_len++;
 	while (line)
 	{
-		if (ft_strlen(line) != db->x_len + 1)
+		// if ((int)ft_strlen(line) != db->x_len + 1)
+		if (ft_countline(line) != db->x_len)
 		{
 			ft_printf("map has inconsistent length :O\n");
-			error(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		db->y_len++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	free (line);
+	line = NULL;
 	close (fd);
+}
+
+int	ft_countline(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (*line && *line != '\n')
+	{
+		i++;
+		line++;
+	}
+	return (i);
 }

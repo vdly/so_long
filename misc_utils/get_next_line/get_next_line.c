@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:35:20 by johii             #+#    #+#             */
-/*   Updated: 2023/09/06 17:02:21 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/06 22:02:44 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*read_basket(int fd, char *basket)
 {
@@ -27,7 +27,7 @@ char	*read_basket(int fd, char *basket)
 		if (bytes_read <= 0)
 			break ;
 		temp_basket[bytes_read] = '\0';
-		basket = ft_strjoin(basket, temp_basket);
+		basket = gnlft_strjoin(basket, temp_basket);
 	}
 	free (temp_basket);
 	temp_basket = (NULL);

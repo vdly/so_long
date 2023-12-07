@@ -6,11 +6,11 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 21:26:07 by johii             #+#    #+#             */
-/*   Updated: 2023/11/30 19:52:14 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/07 17:15:46 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	check_walls(t_database *db)
 {
@@ -70,16 +70,24 @@ void	required_char(t_database *db)
 
 	x = 0;
 	y = 0;
+
 	while (db->map[y])
 	{
+		x = 0;
 		while (db->map[y][x])
 		{
 			if (db->map[y][x] == 'P')
+			{
 				db->player_count++;
+			}
 			if (db->map[y][x] == 'C')
+			{
 				db->coin_count++;
+			}
 			if (db->map[y][x] == 'E')
+			{
 				db->exit_count++;
+			}
 			x++;
 		}
 		y++;

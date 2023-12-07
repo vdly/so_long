@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:17:55 by johii             #+#    #+#             */
-/*   Updated: 2023/12/04 15:26:48 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/07 22:18:45 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,48 @@ typedef struct t_database
 	void		*window;
 	t_imgs		*imgs;
 	t_player	*player_sprites;
-	t_coins		*coin_sprite;
+	t_coins		*coin_sprites;
 }	t_database;
 
-void	read_map(t_database *db, char ***map);
-void	map_size(t_database *db);
+void	xpm_to_imgs(t_database *db);
+void	initialize_database(t_database *db, char *map);
+
 void	check_walls(t_database *db);
 void	invalid_char(t_database *db);
 void	required_char(t_database *db);
 void	char_check(t_database *db);
-void	check_all(t_database *db);
+void	check_map(t_database *db);
+
 void	player_pos(t_database *db);
-int		valid_path_to_exit(int *flag, int x, int y, t_database *db);
+void	valid_path_to_exit(int *flag, int x, int y, t_database *db);
 void	check_map_path(t_database *db);
-void	exit(t_database *db);
+
+void	map_size(t_database *db);
+
+void	print_wall(t_database *db, int *width, int *height);
+void	print_floor(t_database *db, int *width, int *height);
+void	print_player(t_database *db, int *width, int *height);
+void	print_exit(t_database *db, int *width, int *height);
+void	print_coin(t_database *db, int *width, int *height);
+
+void	xpm_to_imgs(t_database *db);
+void	print_map(t_database *db);
+
+void	read_map(t_database *db, char ***map);
+
+void	move_w(t_database *db);
+void	move_a(t_database *db);
+void	move_s(t_database *db);
+void	move_d(t_database *db);
+int		set_keys(int keycode, t_database *db);
+int		exit_game(t_database *db);
+
+//kennethwashere
+void	read_check_map(t_database *db);
+void	player_xpm(t_database *db);
+void	player_sprite(t_database *db);
+void	coin_xpm(t_database *db);
+void	coin_sprite(t_database *db);
 
 #endif
 

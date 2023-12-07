@@ -1,32 +1,55 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: johii <johii@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/16 19:12:22 by johii             #+#    #+#              #
-#    Updated: 2023/11/25 15:17:40 by johii            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME := so_long
 
-LIBFT		=	libft/*.c
-PRINTF		=	libft/ft_printf/*.c
-GNL			=	get_next_line/*.c
+SRCS := so_long.c \
+		check_map.c	\
+		check_path.c	\
+		map_size.c	\
+		print_img.c	\
+		print_map.c	\
+		read_map.c	\
+		set_keys.c	\
+		sprite_coin.c \
+		sprite_player.c \
 
-CC			=	cc
-FLAGS		=	-Wall -Werror -Wextra
-MLX_FLAGS	=	-lmlx -framework OpenGL -framework AppKit 
-RM			=	rm -rf
+GNL_SRCS := misc_utils/get_next_line/get_next_line.c \
+			misc_utils/get_next_line/get_next_line_utils.c \
 
-clean		:
-				$(RM) libft/*.o
-				$(RM) libft/ft_printf/*.o
-				$(RM) get_next_line/*.c
-            
-fclean		:	clean
-				$(RM)
-            
-re			:	fclean all
+OBJS := $(addprefix object_files/, $(SRCS:.c=.o))
 
-.PHONY		:	all bonus clean fclean re
+CC := cc
+CFLAGS := -Wall -Werror -Wextra -g
+MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
+
+LIBFT_DIR := ./misc_utils/libft
+PRINTF_DIR := ./misc_utils/libft/ft_printf
+
+RM := rm
+RMFLAGS := -rf
+
+LINK_LIBFT := -L$(LIBFT_DIR) -lft
+LINK_PRINTF := -L$(PRINTF_DIR) -lftprintf
+
+all: $(NAME)
+
+object_files/%.o: %.c
+	$(CC) -c $< -o $@ -g
+
+object_files/%.o: so_long_utils/%.c
+	$(CC) -c $< -o $@ -g
+
+$(NAME): $(OBJS) $(GNL_SRCS)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(PRINTF_DIR)
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(GNL_SRCS) $(LINK_LIBFT) $(LINK_PRINTF) -o $(NAME)
+
+clean:
+	$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(PRINTF_DIR) 
+	$(RM) $(RMFLAGS) $(OBJS)
+
+fclean: clean
+	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C $(PRINTF_DIR) 
+	$(RM) $(RMFLAGS) $(NAME)
+
+re: fclean all

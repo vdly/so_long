@@ -1,0 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jliaw <jliaw@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/26 11:28:59 by jliaw             #+#    #+#              #
+#    Updated: 2023/10/26 23:34:03 by jliaw            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = so_long
+RM = rm -rf
+CC = gcc
+CFLAGS = -Wall -Wextra -Wall
+MLX_FLAGS = -lmlx -framework OpenGL -framework Appkit
+INCLUDES = so_long.h
+SRC_DIR = 01-MODULES/00-SOLONG-UTILS
+GNLINE_DIR = 01-MODULES/02-FT_GET_NEXT_LINE
+SRC = \
+	  so_long.c						\
+	  $(SRC_DIR)/uti_check_map.c 	\
+	  $(SRC_DIR)/uti_input_map.c 	\
+	  $(SRC_DIR)/uti_print_map.c	\
+	  $(SRC_DIR)/uti_set_keys.c		\
+	  $(SRC_DIR)/uti_others.c		\
+	  $(GNLINE_DIR)/get_next_line.c	\
+	  $(GNLINE_DIR)/get_next_line_utils.c	
+OBJ = $(SRC:.c=.o)
+PRINTF_DIR = 01-MODULES/01-PRINTF
+PRINTF_A = $(PRINTF_DIR)/libftprintf.a
+
+all: $(NAME)
+
+$(NAME): $(OBJ) $(INCLUDES)
+	cd $(PRINTF_DIR) && make && cd -
+	$(CC) $(SRC) $(PRINTF_A) $(GNLINE_SRC) $(FLAGS) $(MLX_FLAGS) -o $(NAME)
+
+clean:
+	cd $(PRINTF_DIR) && make clean && cd -
+	$(RM) $(OBJ)
+
+fclean: clean
+	cd $(PRINTF_DIR) && make fclean && cd -
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean
