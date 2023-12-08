@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:18:19 by johii             #+#    #+#             */
-/*   Updated: 2023/12/07 22:30:44 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/08 18:12:43 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	exit_game(t_database *db)
 	(void) *db;
 	ft_printf("successful exit!");
 	exit(EXIT_SUCCESS);
-
 }
 
 int	game_win(t_database *db)
@@ -75,6 +74,3 @@ int	main(int argc, char **argv)
 		mlx_loop(db.mlx);
 	}
 }
-
-
-

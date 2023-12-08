@@ -8,6 +8,7 @@ SRCS := so_long.c \
 		print_map.c	\
 		read_map.c	\
 		set_keys.c	\
+		set_keys2.c \
 		sprite_coin.c \
 		sprite_player.c \
 
@@ -17,7 +18,7 @@ GNL_SRCS := misc_utils/get_next_line/get_next_line.c \
 OBJS := $(addprefix object_files/, $(SRCS:.c=.o))
 
 CC := cc
-CFLAGS := -Wall -Werror -Wextra -g
+CFLAGS := -Wall -Werror -Wextra
 MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_DIR := ./misc_utils/libft
@@ -32,10 +33,10 @@ LINK_PRINTF := -L$(PRINTF_DIR) -lftprintf
 all: $(NAME)
 
 object_files/%.o: %.c
-	$(CC) -c $< -o $@ -g
+	$(CC) -c $< -o $@
 
 object_files/%.o: so_long_utils/%.c
-	$(CC) -c $< -o $@ -g
+	$(CC) -c $< -o $@
 
 $(NAME): $(OBJS) $(GNL_SRCS)
 	$(MAKE) -C $(LIBFT_DIR)
@@ -53,3 +54,13 @@ fclean: clean
 	$(RM) $(RMFLAGS) $(NAME)
 
 re: fclean all
+
+#debugging#
+
+# CFLAGS := -Wall -Werror -Wextra -g
+
+# object_files/%.o: %.c
+# 	$(CC) -c $< -o $@ -g
+
+# object_files/%.o: so_long_utils/%.c
+# 	$(CC) -c $< -o $@ -g

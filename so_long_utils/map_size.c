@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:50:26 by johii             #+#    #+#             */
-/*   Updated: 2023/12/07 17:06:18 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/08 18:13:27 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	map_size(t_database *db)
 		db->x_len++;
 	while (line)
 	{
-		// if ((int)ft_strlen(line) != db->x_len + 1)
 		if (ft_countline(line) != db->x_len)
 		{
 			ft_printf("map has inconsistent length :O\n");

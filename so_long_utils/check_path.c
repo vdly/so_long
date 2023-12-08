@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:32:30 by johii             #+#    #+#             */
-/*   Updated: 2023/12/07 19:28:10 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/08 18:12:09 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,7 @@ void	check_map_path(t_database *db)
 
 	x = db->player_x;
 	y = db->player_y;
-	printf("y: %d | x: %d\n", y, x);
 	flag = 0;
-	// int i = -1;
-	// while (db->check_map[++i])
-	// {
-	// 	printf("%s\n", db->check_map[i]);
-	// }
-	printf("current view: %c\n", db->map[y][x]);
 	valid_path_to_exit(&flag, x, y, db);
 	if (flag != 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:17:55 by johii             #+#    #+#             */
-/*   Updated: 2023/12/07 22:18:45 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/08 19:04:24 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,13 @@ void	move_w(t_database *db);
 void	move_a(t_database *db);
 void	move_s(t_database *db);
 void	move_d(t_database *db);
+void	if_exit(t_database *db);
 int		set_keys(int keycode, t_database *db);
 int		exit_game(t_database *db);
 
-//kennethwashere
-void	read_check_map(t_database *db);
 void	player_xpm(t_database *db);
 void	player_sprite(t_database *db);
+
 void	coin_xpm(t_database *db);
 void	coin_sprite(t_database *db);
 
