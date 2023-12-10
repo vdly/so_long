@@ -15,7 +15,8 @@ SRCS := so_long.c \
 GNL_SRCS := misc_utils/get_next_line/get_next_line.c \
 			misc_utils/get_next_line/get_next_line_utils.c \
 
-OBJS := $(addprefix object_files/, $(SRCS:.c=.o))
+OBJS_DIR := objects
+OBJS := $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 CC := cc
 CFLAGS := -Wall -Werror -Wextra
@@ -32,21 +33,24 @@ LINK_PRINTF := -L$(PRINTF_DIR) -lftprintf
 
 all: $(NAME)
 
-object_files/%.o: %.c
+$(OBJS_DIR)/%.o: %.c
 	$(CC) -c $< -o $@
 
-object_files/%.o: so_long_utils/%.c
+$(OBJS_DIR)/%.o: so_long_utils/%.c
 	$(CC) -c $< -o $@
 
-$(NAME): $(OBJS) $(GNL_SRCS)
+$(NAME): $(OBJS_DIR) $(OBJS) $(GNL_SRCS)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(PRINTF_DIR)
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(GNL_SRCS) $(LINK_LIBFT) $(LINK_PRINTF) -o $(NAME)
 
+$(OBJS_DIR):
+	mkdir -p $(OBJS_DIR)
+
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(PRINTF_DIR) 
-	$(RM) $(RMFLAGS) $(OBJS)
+	$(RM) $(RMFLAGS) $(OBJS_DIR)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:32:30 by johii             #+#    #+#             */
-/*   Updated: 2023/12/08 18:12:09 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/08 20:08:59 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	player_pos(t_database *db)
 
 	x = 0;
 	y = 0;
-	printf("y len: %d | x len: %d\n", db->y_len, db->x_len);
 	while (y < db->y_len)
 	{
 		x = 0;
@@ -29,7 +28,6 @@ void	player_pos(t_database *db)
 			{
 				db->player_x = x;
 				db->player_y = y;
-				printf("AAAAAA\n");
 			}
 			x++;
 		}
