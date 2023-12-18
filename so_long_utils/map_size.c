@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:50:26 by johii             #+#    #+#             */
-/*   Updated: 2023/12/08 18:13:27 by johii            ###   ########.fr       */
+/*   Updated: 2023/12/18 14:03:54 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	map_size(t_database *db)
 	fd = open(db->map_name, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
+	{
 		ft_printf("file is corrupted??\n");
+		exit(EXIT_FAILURE);
+	}
 	while (line[db->x_len] != '\0' && line[db->x_len] != '\n')
 		db->x_len++;
 	while (line)
